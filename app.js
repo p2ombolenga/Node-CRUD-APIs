@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const Customer = require('./models/Customer.model.js');
+const Customer = require('./models/Customer.model.js')
+const dotenv = require("dotenv").config()
+
 const app = express()
 
 app.use(express.json())
@@ -77,7 +79,7 @@ app.delete('/api/customers/:id', async (req, res) =>{
 
 
 
-mongoose.connect("mongodb+srv://nsabimanapeter2000:admin@nodebackend.0spj8ja.mongodb.net/Node-API?retryWrites=true&w=majority&appName=NodeBackend")
+mongoose.connect(process.env.connectionString)
 .then(()=>{
     console.log("Connected to database");
     app.listen(3000, () =>{
